@@ -1,4 +1,6 @@
 ```markdown
+Scroll down to see the `ENGLISH README`
+
 # TikTok FPS Compression Bypasser
 
 ## Sobre o projeto
@@ -80,3 +82,89 @@ Portanto, para ver o efeito completo, recomendo assistir seus vídeos editados v
 Este projeto é **open source** e você pode usar, modificar e contribuir livremente.
 
 ```
+---------------------------------------------------
+ENGLISH README
+---------------------------------------------------
+```markdown
+# TikTok FPS Compression Bypasser
+
+## About the project
+
+TikTok limits the maximum FPS of videos to 30 fps by default, using a **hardware encoder** to internally speed up the video. This encoder adjusts the video timing based on the `timescale` parameter found in the internal atoms of the MP4 file (`mvhd` and `mdhd`). The final video is displayed at the original frame rate, but this speedup depends directly on the value of the `timescale`.
+
+Since I make edits on TikTok and want my edits to be seen at 60 fps, I created this method to bypass TikTok’s automatic compression by directly adjusting the file’s `timescale` to "trick" the encoder and keep the original smoothness.
+
+## Important Notices
+
+With this method, it is possible to upload videos with **unlimited** FPS, surpassing TikTok’s standard 30 fps limit.
+
+However, the **playback** of these videos will depend entirely on the hardware power of the user’s device and the phone’s decoder. So, even though the file has a higher frame rate, on weaker devices the video might not play smoothly.
+
+In summary: the FPS in the video file is unlimited, but the actual playback may vary depending on the device.
+
+Recommendation: use a maximum of 120 fps original.
+
+---
+
+## History and Inspiration
+
+The old method to bypass FPS via upload stopped working on **March 14, 2025**, and that’s when I started creating a new method.
+
+Initially, my inspiration was to try to remake @nxt_shark537’s TikTok method. At the time, I didn’t know how he did his method and had no clues. Today I know he used ffmpeg for that. ( ffmpeg -itsscale 2 -i input.mp4 -c:v copy -c:a copy output.mp4) 
+
+Since I didn’t know that at the time, I went a different path, focusing on modifying the internal metadata of the MP4 file. While nxt_shark537’s method is done with ffmpeg, my method works directly on the `mvhd` and `mdhd` atoms of the file.
+
+---
+
+## How the method works
+
+The video has an original frame rate (for example, 60 fps). TikTok tries to force this rate to 30 fps using a hardware encoder that speeds up the video to fit this limit.
+
+To circumvent this, the script modifies the `timescale` value inside the MP4 `mvhd` and `mdhd` atoms with the formula:
+
+```
+
+New timescale = original timescale × (30 / original FPS of the video)
+
+```
+
+This way, the video is proportionally sped up to keep the original smoothness despite TikTok’s compression.
+
+---
+
+## About slow motion on TikTok Web
+
+It is important to note that on **TikTok Web (browser)**, videos with this patch might appear in **slow motion**. This happens because TikTok’s web version uses a **software encoder**, which does not interpret the `timescale` the same way the hardware encoder in mobile apps does.
+
+Therefore, to see the full effect, I recommend watching your edited videos via the **TikTok mobile app**.
+
+---
+
+## Usage
+
+1. Clone or download this repository.  
+2. Run the script via terminal:
+    python3 patcher.py input.mp4 output.mp4 [scale_factor]
+```
+
+* `input.mp4`: original video file.
+* `output.mp4`: modified file.
+* `scale_factor` (optional): factor to manually adjust the timescale (ex: 1.5). If not provided, the script calculates automatically based on the formula: (30 / original FPS of the video)
+
+---
+
+## Credits
+
+* [Lenoz7](https://www.tiktok.com/@lenoz7) (Luís) — Creator of the project and script, responsible for the start of development.
+* [Poshyler](https://www.tiktok.com/@poshyler) — Friend and collaborator who helped develop the idea and technical implementation.
+* [nxt\_shark537](https://www.tiktok.com/@nxt_shark537) — Inspiration for the method’s concept; did not participate in development, only the concept was used.
+
+---
+
+```
+## License
+
+This project is **open source** and you can use, modify, and contribute freely.
+
+```
+
