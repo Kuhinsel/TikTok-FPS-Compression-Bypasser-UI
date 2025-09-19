@@ -33,13 +33,13 @@ brew install mediainfo
 ```
 
 ## Usage
-# GUI Mode
+### GUI Mode
 Run without arguments:
 ```bash
 python patcher.py
 ```
 
-# CLI Mode
+### CLI Mode
 ```bash
 python patch_mp4_gui.py input.mp4 output.mp4 [scale_factor]
 ```
