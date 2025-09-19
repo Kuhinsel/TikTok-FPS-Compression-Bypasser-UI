@@ -1,4 +1,4 @@
-# TikTok FPS Bypasser (Forked Version)
+# TikTok FPS Bypasser (GUI Version)
 
 This project is a fork of [LuisAlves10/TikTok-FPS-Compression-Bypasser](https://github.com/LuisAlves10/TikTok-FPS-Compression-Bypasser) with improvements for GUI usability and FPS display. It allows modifying MP4 files to bypass TikTok's FPS restrictions by patching the `mvhd` and `mdhd` atoms.
 
