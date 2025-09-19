@@ -19,6 +19,7 @@ This project is a fork of [LuisAlves10/TikTok-FPS-Compression-Bypasser](https://
 
 ```bash
 pip install pymediainfo
+```
 
 ## License
 
