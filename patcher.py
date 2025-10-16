@@ -164,7 +164,7 @@ class MP4PatcherApp:
         input_file = self.input_entry.get()
         scale_factor = self.scale_entry.get()
         if not input_file or not os.path.exists(input_file):
-            self.fps_label.config(text="Input FPS: - | Output FPS: -", fg="black")
+            self.fps_label.config(text="Input FPS: 30 | Output FPS: -", fg="black")
             return
 
         try:
@@ -182,7 +182,7 @@ class MP4PatcherApp:
         color = "black"
         # FPS part
         self.fps_label.config(
-            text=f"Input FPS: {input_fps:.1f} | Output FPS: {output_fps:.1f}"
+            text=f"Input FPS: {input_fps:.1f} (30 FPS on Tiktok) | Output FPS: {output_fps:.1f} ({30*scale_factor} FPS on Tiktok)"
         )
 
         # Warning part
