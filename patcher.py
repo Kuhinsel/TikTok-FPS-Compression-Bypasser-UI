@@ -182,7 +182,7 @@ class MP4PatcherApp:
         color = "black"
         # FPS part
         self.fps_label.config(
-            text=f"Input FPS: {input_fps:.1f} (30 FPS on Tiktok) | Output FPS: {output_fps:.1f} ({30*scale_factor} FPS on Tiktok)"
+            text=f"Input FPS: {input_fps:.1f} (30 FPS on Tiktok) | Output FPS: {output_fps:.1f} ({30*scale} FPS on Tiktok)"
         )
 
         # Warning part
@@ -222,7 +222,7 @@ class MP4PatcherApp:
         except ValueError:
             scale = None
 
-        output_file = os.path.join(output_folder, os.path.basename(input_file + "_patched"))
+        output_file = os.path.join(output_folder, os.path.basename(input_file[:-4] + "_patched.mp4"))
         try:
             patch_mp4(input_file, output_file, scale_factor=scale)
             messagebox.showinfo("Success", f"File patched successfully:\n{output_file}")
