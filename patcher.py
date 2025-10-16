@@ -222,7 +222,7 @@ class MP4PatcherApp:
         except ValueError:
             scale = None
 
-        output_file = os.path.join(output_folder, os.path.basename(input_file))
+        output_file = os.path.join(output_folder, os.path.basename(input_file + "_patched"))
         try:
             patch_mp4(input_file, output_file, scale_factor=scale)
             messagebox.showinfo("Success", f"File patched successfully:\n{output_file}")
